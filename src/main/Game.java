@@ -3,6 +3,10 @@ package main;
 
 public class Game {
 
+    private Player player;
+    private WorldMap world;
+    private CommandRegistry commandRegistry;
+
     public Game(){
         System.out.println("Initializing game...");
     }
@@ -11,7 +15,7 @@ public class Game {
         System.out.println("Running game...");
         // your runtime code here...
 
-    // TEST D+"+E D +D D "
+    //
 
         // end of game
     }
