@@ -1,5 +1,6 @@
 package main;
 import utils.Array2Dprinter;
+import utils.IPrintable;
 
 public class MapCommand implements ICommand {
     private WorldMap map;
@@ -25,6 +26,6 @@ public class MapCommand implements ICommand {
 
     @Override
     public void execute(String input, Game game) {
-        Array2Dprinter.print2DArray(map.getMap(), 0, 0);
+        Array2Dprinter.print2DArray((IPrintable[][]) map.getMap(), map.getPlayerRow(), map.getPlayerCol());
     }
 }

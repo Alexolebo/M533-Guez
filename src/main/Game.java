@@ -14,13 +14,21 @@ public class Game {
         player = new Player();
         world = new WorldMap(3, 3);
 
-        Location loc00 = new Location("Start", "You are at the starting point.", true);
-        Location loc01 = new Location("Locked", "A locked room.", false);
-        Location loc10 = new Location("North room", "You are in a room to the north.", true);
+        Location loc00 = new Location("Start", "Vous êtes au début.", true);
+        Location loc01 = new Location("Prilly", "L'endroit le plus dangereux de tous les temps.", true);
+        Location loc02 = new Location("Yverdons-Les-Bains", "La pire ville de suisse romande.", false);
+        Location loc10 = new Location("Renens", "Le monde snack t attend.", true);
+        Location loc11 = new Location("Crissier", "Marcolet", true);
+        Location loc12 = new Location("Bourdonettes", "une ville un peu moins dangereuse que Prilly.", true);
+        Location loc20 = new Location("Village", "tu es à Eclépens donc tu n'as pas de connexion", true);
 
         world.addLocation(loc00, 0, 0);
         world.addLocation(loc01, 0, 1);
+        world.addLocation(loc02, 0, 2);
         world.addLocation(loc10, 1, 0);
+        world.addLocation(loc11, 1, 1);
+        world.addLocation(loc12, 1, 2);
+        world.addLocation(loc20, 2, 0);
 
         world.setPlayerLocation(0, 0);
         player.setLocation(loc00);
@@ -28,6 +36,7 @@ public class Game {
         commandRegistry.addCommand(new GoCommand(world, player));
         commandRegistry.addCommand(new LookCommand(player));
         commandRegistry.addCommand(new MapCommand(world));
+        commandRegistry.addCommand(new HelpCommand(commandRegistry));
     }
 
     
