@@ -8,13 +8,15 @@ public class Game {
     private WorldMap world;
     private CommandRegistry commandRegistry;
 
-    public Game(){
+    public Game() {
         System.out.println("Initializing game...");
         commandRegistry = new CommandRegistry();
         player = new Player();
         world = new WorldMap(3, 3);
 
         Location loc00 = new Location("Start", "Vous êtes au début.", true);
+        Item cle = new Item("clé", "Une clé rouillée, elle ouvre peut-être quelque chose.");
+        loc00.addItem(cle);
         Location loc01 = new Location("Prilly", "L'endroit le plus dangereux de tous les temps.", true);
         Location loc02 = new Location("Yverdons-Les-Bains", "La pire ville de suisse romande.", false);
         Location loc10 = new Location("Renens", "Le monde snack t attend.", true);
@@ -39,13 +41,11 @@ public class Game {
         commandRegistry.addCommand(new HelpCommand(commandRegistry));
     }
 
-    
-    
     public void run() {
         System.out.println("Welcome to the game! Type 'help' to see available commands.");
         // your runtime code here...
 
-    //
+        //
 
         // end of game
         Scanner scanner = new Scanner(System.in);
