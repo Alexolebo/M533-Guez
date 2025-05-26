@@ -2,7 +2,9 @@ package main;
 import utils.Array2Dprinter;
 import utils.IPrintable;
 
+
 public class MapCommand implements ICommand {
+    
     private WorldMap map;
 
     public MapCommand(WorldMap map) {
@@ -24,8 +26,14 @@ public class MapCommand implements ICommand {
         return input.trim().equals("map");
     }
 
-    @Override
-    public void execute(String input, Game game) {
-        Array2Dprinter.print2DArray((IPrintable[][]) map.getMap(), map.getPlayerRow(), map.getPlayerCol());
-    }
+ @Override
+public void execute(String input, Game game) {
+    String mapString = Array2Dprinter.print2DArray(
+        (IPrintable[][]) map.getMap(),
+        map.getPlayerRow(),
+        map.getPlayerCol()
+    );
+    System.out.println(mapString);
+}
+    
 }
