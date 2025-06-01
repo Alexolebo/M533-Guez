@@ -15,22 +15,30 @@ public class Game {
         world = new WorldMap(3, 3);
 
         Location loc00 = new Location("Start", "Vous êtes au début.", true);
-        Item cle = new Item("clé", "Une clé rouillée, elle ouvre peut-être quelque chose.");
-        loc00.addItem(cle);
         Location loc01 = new Location("Prilly", "L'endroit le plus dangereux de tous les temps.", true);
-        Location loc02 = new Location("Yverdons-Les-Bains", "La pire ville de suisse romande.", false);
-        Location loc10 = new Location("Renens", "Le monde snack t attend.", true);
-        Location loc11 = new Location("Crissier", "Marcolet", true);
-        Location loc12 = new Location("Bourdonettes", "une ville un peu moins dangereuse que Prilly.", true);
-        Location loc20 = new Location("Village", "tu es à Eclépens donc tu n'as pas de connexion", true);
+        Location loc02 = new Location("Yverdon-les-Bains", "La pire ville de suisse romande.", false);
+        Location loc10 = new Location("Renens", "Le monde snack t'attend.", true);
+        Location loc11 = new Location("Crissier", "Marcolet.", false);
+        Location loc12 = new Location("Bourdonettes", "Une ville un peu moins dangereuse que Prilly.", false);
+        Location loc20 = new Location("Eclépens", "Tu n'as pas de connexion ici.", false);
+        Location loc21 = new Location("Paris", "L'endroit qui a la meilleure équipe de foot d'Europe.", true);
+        Location loc22 = new Location("Chaux-de-Fonds", "Force à Pierre.", false);
+        GameObject keyYverdon = new Key("key", "Une clé rouillée", loc02);
+        loc01.addObject(keyYverdon);
+        GameObject badgePierre = new Key("badge", "Un badge noir avec le logo d’un PC gamer", loc22);
+        loc21.addObject(badgePierre);
+        GameObject passCrissier = new Key("pass", "Un pass VIP avec l’inscription 'Marcolet Club'", loc11);
+        loc10.addObject(passCrissier);
 
-        world.addLocation(loc00, 0, 0);
-        world.addLocation(loc01, 0, 1);
-        world.addLocation(loc02, 0, 2);
-        world.addLocation(loc10, 1, 0);
-        world.addLocation(loc11, 1, 1);
-        world.addLocation(loc12, 1, 2);
-        world.addLocation(loc20, 2, 0);
+        this.world.addLocation(loc00, 0, 0);
+        this.world.addLocation(loc01, 0, 1);
+        this.world.addLocation(loc02, 0, 2);
+        this.world.addLocation(loc10, 1, 0);
+        this.world.addLocation(loc11, 1, 1);
+        this.world.addLocation(loc12, 1, 2);
+        this.world.addLocation(loc20, 2, 0);
+        this.world.addLocation(loc21, 2, 1);
+        this.world.addLocation(loc22, 2, 2);
 
         world.setPlayerLocation(0, 0);
         player.setLocation(loc00);
