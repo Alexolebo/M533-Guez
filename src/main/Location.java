@@ -8,7 +8,6 @@ public class Location implements IPrintable {
     private String name;
     private String description;
     private boolean isOpen;
-    private List<Item> items;
     private List<GameObject> objects = new ArrayList();
 
 
@@ -16,7 +15,6 @@ public class Location implements IPrintable {
         this.name = name;
         this.description = description;
         this.isOpen = isOpen;
-        this.items = new ArrayList<>();
     }
 
     public String getName() {
