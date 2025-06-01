@@ -42,7 +42,8 @@ public class Game {
 
         world.setPlayerLocation(0, 0);
         player.setLocation(loc00);
-
+        player.setInventory(new Inventory());
+        
         commandRegistry.addCommand(new GoCommand(world, player));
         commandRegistry.addCommand(new LookCommand(player));
         commandRegistry.addCommand(new MapCommand(world));
@@ -51,11 +52,6 @@ public class Game {
 
     public void run() {
         System.out.println("Welcome to the game! Type 'help' to see available commands.");
-        // your runtime code here...
-
-        //
-
-        // end of game
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
