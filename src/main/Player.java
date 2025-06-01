@@ -1,17 +1,29 @@
 package main;
 
 public class Player {
-    private Location location;
+   private Location location;
+   private Inventory inventory;
 
-    public void moveTo(Location newLocation) {
-        this.location = newLocation;
-    }
+   public Player() {
+   }
 
-    public Location getLocation() {
-        return location;
-    }
+   public void moveTo(Location newLocation) {
+      this.location = newLocation;
+   }
 
-    public void setLocation(Location loc) {
-        this.location = loc;
-    }
+   public Location getLocation() {
+      return this.location;
+   }
+
+   public void setLocation(Location loc) {
+      this.location = loc;
+   }
+
+   public Inventory getInventory() {
+      return this.inventory;
+   }
+
+   public void setInventory(Inventory inventory) {
+      this.inventory = inventory;
+   }
 }

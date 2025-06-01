@@ -8,13 +8,13 @@ public class Location implements IPrintable {
     private String name;
     private String description;
     private boolean isOpen;
-    private List<Item> items;
+    private List<GameObject> objects = new ArrayList();
+
 
     public Location(String name, String description, boolean isOpen) {
         this.name = name;
         this.description = description;
         this.isOpen = isOpen;
-        this.items = new ArrayList<>();
     }
 
     public String getName() {
@@ -33,12 +33,13 @@ public class Location implements IPrintable {
         this.isOpen = true;
     }
 
-    public List<Item> getItems() {
-        return items;
+    public List<GameObject> getObjects() {
+        return this.objects;
     }
 
-    public void addItem(Item item) {
-        items.add(item);
+    public void addObject(GameObject obj){
+        this.objects.add(obj);
+
     }
 
     @Override

@@ -28,7 +28,7 @@ An easy option is to use the Github Desktop application
 - Open it and log in with your github account
 - At the top left click **Add** and choose **Clone Repository**
 - Pick your newly created repository and choose a directory to clone it on your machine.
-
+OUAAAAAIS 
 In the directory you chose above you should now have a new directory named after you repository name.
 
 Alternatively you can do it on the command line with git directly
