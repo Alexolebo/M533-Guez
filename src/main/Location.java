@@ -43,13 +43,7 @@ public class Location implements IPrintable {
         this.objects.add(obj);
 
     }
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void addItem(Item item) {
-        items.add(item);
-    }
+ 
 
     @Override
     public String getPrintableString() {
