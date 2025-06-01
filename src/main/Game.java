@@ -10,9 +10,9 @@ public class Game {
 
     public Game() {
         System.out.println("Initializing game...");
-        commandRegistry = new CommandRegistry();
-        player = new Player();
-        world = new WorldMap(3, 3);
+        this.commandRegistry = new CommandRegistry();
+        this.player = new Player();
+        this.world = new WorldMap(3, 3);
 
         Location loc00 = new Location("Start", "Vous êtes au début.", true);
         Location loc01 = new Location("Prilly", "L'endroit le plus dangereux de tous les temps.", true);
