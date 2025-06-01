@@ -10,19 +10,7 @@ public class Main {
 
         System.out.println(StringStyling.StyleString("Starting...", Style.ITALIC, Color.BLACK));
         Game game = new Game();
-        // Test Class Item
-        /* 
-        // Création d’un objet Item
-        Item cle = new Item("Clé", "Une clé dorée ancienne.");
-
-        // Affichage pour vérifier que tout fonctionne
-        System.out.println("Nom de l'objet : " + cle.getName());
-        System.out.println("Description de l'objet : " + cle.getDescription());
-        System.out.println("toString() : " + cle);
-        */
-
         game.run();
-
         System.out.println(StringStyling.StyleString("Terminating...", Style.ITALIC, Color.BLACK));
     }
 
