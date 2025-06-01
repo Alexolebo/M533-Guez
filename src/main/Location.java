@@ -43,7 +43,6 @@ public class Location implements IPrintable {
         this.objects.add(obj);
 
     }
- 
 
     @Override
     public String getPrintableString() {
