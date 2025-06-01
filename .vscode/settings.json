@@ -3,5 +3,9 @@
   "editor.tabSize": 4,
   "editor.insertSpaces": true,
 "editor.detectIndentation": false,
-"java.debug.settings.onBuildFailureProceed": true
+"java.debug.settings.onBuildFailureProceed": true,
+"java.project.sourcePaths": [
+    "src"
+],
+"java.project.referencedLibraries": []
 }

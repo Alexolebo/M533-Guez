@@ -40,14 +40,17 @@ public class Game {
         this.world.addLocation(loc21, 2, 1);
         this.world.addLocation(loc22, 2, 2);
 
-        world.setPlayerLocation(0, 0);
-        player.setLocation(loc00);
-        player.setInventory(new Inventory());
+        this.world.setPlayerLocation(0, 0);
+        this.player.setLocation(loc00);
+        this.player.setInventory(new Inventory());
         
-        commandRegistry.addCommand(new GoCommand(world, player));
-        commandRegistry.addCommand(new LookCommand(player));
-        commandRegistry.addCommand(new MapCommand(world));
-        commandRegistry.addCommand(new HelpCommand(commandRegistry));
+        this.commandRegistry.addCommand(new GoCommand(this.world, this.player));
+        this.commandRegistry.addCommand(new LookCommand(this.player));
+        this.commandRegistry.addCommand(new MapCommand(this.world));
+        this.commandRegistry.addCommand(new HelpCommand(this.commandRegistry));
+        this.commandRegistry.addCommand(new TakeCommand(this.player));
+        this.commandRegistry.addCommand(new InspectCommand(this.player));
+        this.commandRegistry.addCommand(new UseCommand(this.player));
     }
 
     public void run() {
