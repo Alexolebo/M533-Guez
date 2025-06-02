@@ -15,7 +15,7 @@ public class Game {
         System.out.println("Initializing game...");
         this.commandRegistry = new CommandRegistry();
         this.player = new Player();
-        this.world = new WorldMap(3, 3);
+        this.world = new WorldMap(4, 3);
         this.enigmaMap = new HashMap();
         Location loc00 = new Location("Start", "Vous êtes au début.", true);
         Location loc01 = new Location("Prilly", "L'endroit le plus dangereux de tous les temps.", true);
@@ -26,6 +26,9 @@ public class Game {
         Location loc20 = new Location("Eclépens", "Tu n'as pas de connexion ici.", false);
         Location loc21 = new Location("Paris", "L'endroit qui a la meilleure équipe de foot d'Europe.", true);
         Location loc22 = new Location("Chaux-de-Fonds", "Force à Pierre.", false);
+        Location loc30 = new Location("Marseille", "Le terrain des gros en scooter.", false);
+        Location loc31 = new Location("Barcelone", "Shoko.", true);
+        Location loc32 = new Location("Majorque", ".", false);
         
         GameObject keyYverdon = new Key("key", "Une clé rouillée", loc02);
         loc01.addObject(keyYverdon);
@@ -43,6 +46,14 @@ public class Game {
         this.world.addLocation(loc20, 2, 0);
         this.world.addLocation(loc21, 2, 1);
         this.world.addLocation(loc22, 2, 2);
+        this.world.addLocation(loc30, 3, 0);
+        this.world.addLocation(loc31, 3, 1);
+        this.world.addLocation(loc32, 3, 2);
+
+        
+
+        
+
 
         this.enigmaMap.put(loc00, new Enigma("Quel est le comble pour un prof de Java ?", "de ne pas avoir la classe", loc00));
         this.enigmaMap.put(loc02, new Enigma("Je grandis en diminuant. Qui suis-je ?", "un trou", loc02));
