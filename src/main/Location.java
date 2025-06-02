@@ -44,11 +44,19 @@ public class Location implements IPrintable {
 
     @Override
     public String getPrintableString() {
-        return isOpen ? " O " : " X ";
+        if (!isOpen) return "LACHE CA"; // si la zone est verrouillée
+
+        String fullName = name;
+
+        if (!objects.isEmpty()) {
+            fullName += "*"; // indique la présence d’un objet
+        }
+
+        return fullName;
     }
 
     @Override
     public boolean isGrayedOut() {
-        return false;
+        return !isOpen;
     }
 }
