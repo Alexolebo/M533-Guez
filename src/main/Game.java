@@ -17,6 +17,7 @@ public class Game {
         this.player = new Player();
         this.world = new WorldMap(4, 3);
         this.enigmaMap = new HashMap();
+        
         Location loc00 = new Location("Start", "Vous êtes au début.", true);
         Location loc01 = new Location("Prilly", "L'endroit le plus dangereux de tous les temps.", true);
         Location loc02 = new Location("Yverdon-les-Bains", "La pire ville de suisse romande.", false);
