@@ -5,25 +5,24 @@ import java.util.Scanner;
 public class Enigma {
    private String question;
    private String answer;
-   private Location linkedZone;
+   private Location target;
 
-   public Enigma(String question, String answer, Location linkedZone) {
+    public Enigma(String question, String answer, Location target) {
       this.question = question;
       this.answer = answer.toLowerCase();
-      this.linkedZone = linkedZone;
+      this.target = target;
    }
 
-   public void ask() {
-      Scanner scanner = new Scanner(System.in);
-      System.out.println("Enigma: " + this.question);
-      System.out.print("Your answer: ");
-      String input = scanner.nextLine().toLowerCase();
-      if (input.equals(this.answer)) {
-         System.out.println("Correct! The zone " + this.linkedZone.getName() + " is now unlocked.");
-         this.linkedZone.unlock();
-      } else {
-         System.out.println("Incorrect. Try again later.");
-      }
+    public String getQuestion() {
+        return question;
+    }
 
-   }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public Location getTarget() {
+        return target;
+    }
 }

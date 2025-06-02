@@ -1,13 +1,14 @@
 package main;
 
 import java.util.Map;
+import java.util.Scanner;
 
 public class SolveCommand implements ICommand {
-   private Map<Location, Enigma> enigmaMap;
+   private Map<Location, Enigma> enigmas;
    private Player player;
 
    public SolveCommand(Map<Location, Enigma> enigmaMap, Player player) {
-      this.enigmaMap = enigmaMap;
+      this.enigmas = enigmaMap;
       this.player = player;
    }
 
@@ -23,13 +24,29 @@ public class SolveCommand implements ICommand {
       return input.trim().equalsIgnoreCase("solve");
    }
 
-   public void execute(String input, Game game) {
-      Location current = this.player.getLocation();
-      if (this.enigmaMap.containsKey(current)) {
-         ((Enigma)this.enigmaMap.get(current)).ask();
-      } else {
-         System.out.println("There is no enigma in this location.");
-      }
+   @Override
+    public void execute(String input, Game game) {
+    Location current = player.getLocation();
 
-   }
+    
+    Enigma enigma = enigmas.get(current);
+    if (enigma == null) {
+        System.out.println("Il n'y a pas d'énigme ici.");
+        return;
+    }
+
+    System.out.println("Enigma: " + enigma.getQuestion());
+    System.out.print("Your answer: ");
+
+    Scanner sc = new Scanner(System.in);
+    String response = sc.nextLine().trim();
+
+    if (response.equalsIgnoreCase(enigma.getAnswer())) {
+        Location target = enigma.getTarget();
+        target.unlock(); 
+        System.out.println("Correct! The zone " + target.getName() + " is now unlocked.");
+    } else {
+        System.out.println("Wrong answer.");
+    }
+}
 }

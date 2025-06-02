@@ -32,11 +32,11 @@ public class Game {
         Location loc32 = new Location("Majorque", ".", false);
         
         GameObject keyYverdon = new Key("key", "Une clé rouillée", loc02);
-        loc01.addObject(keyYverdon);
+        loc01.addObject(keyYverdon); // clé qui ouvre Yverdon
         GameObject badgePierre = new Key("badge", "Un badge noir avec le logo d’un PC gamer", loc22);
-        loc21.addObject(badgePierre);
+        loc21.addObject(badgePierre); // badhe qui ouvre CDF
         GameObject passCrissier = new Key("pass", "Un pass VIP avec l’inscription 'Marcolet Club'", loc11);
-        loc10.addObject(passCrissier);
+        loc10.addObject(passCrissier); // pass qui ouvre Crissier
 
         this.world.addLocation(loc00, 0, 0);
         this.world.addLocation(loc01, 0, 1);
@@ -54,14 +54,23 @@ public class Game {
         
 
         
+        // Depuis Prilly, on débloque Crissier
+        Enigma crissierEnigma = new Enigma(
+                "Je suis un nain nul aux jeux-vidéos et un footix. Qui suis-je ?",
+                "Pierre",
+                loc02
+        );
+        enigmaMap.put(loc10, crissierEnigma); // Énigme placée à Prilly
 
+        // Depuis Paris, on débloque Barcelone
+        Enigma barceloneEnigma = new Enigma(
+                "Je suis une capitale catalane où joue Lewandowski. Qui suis-je ?",
+                "Barcelone",
+                loc21
+        );
+        enigmaMap.put(loc20, barceloneEnigma); // Énigme placée à Paris
 
-        this.enigmaMap.put(loc00, new Enigma("Quel est le comble pour un prof de Java ?", "de ne pas avoir la classe", loc00));
-        this.enigmaMap.put(loc02, new Enigma("Je grandis en diminuant. Qui suis-je ?", "un trou", loc02));
-        this.enigmaMap.put(loc11, new Enigma("Je suis un nain nul aux jeux-vidéos et un footix. Qui suis-je ?", "Pierre", loc11));
-        this.enigmaMap.put(loc12, new Enigma("J’ai des dents mais je ne mords pas. Qui suis-je ?", "un peigne", loc12));
-        this.enigmaMap.put(loc20, new Enigma("On me jette quand on a soif et on me ramasse quand on n’en a plus. Qui suis-je ?", "l'ancre", loc20));
-        this.commandRegistry.addCommand(new GoCommand(this.world, this.player, this.enigmaMap));
+        
 
         this.world.setPlayerLocation(0, 0);
         this.player.setLocation(loc00);
