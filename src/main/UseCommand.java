@@ -8,7 +8,7 @@ public class UseCommand implements ICommand {
    }
 
    public String getDescription() {
-      return "Use an object in your inventory.";
+      return "Use an object in your inventory (key,badge or pass).";
    }
 
    public String getUsage() {
