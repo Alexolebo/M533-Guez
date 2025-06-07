@@ -39,7 +39,7 @@ public class WorldMap {
         return map;
     }
     public Location findLocationByName(String name) {
-    for (Location[] row : grid) {
+    for (Location[] row : map) {
         for (Location loc : row) {
             if (loc != null && loc.getName().equalsIgnoreCase(name)) {
                 return loc;
@@ -48,5 +48,12 @@ public class WorldMap {
     }
     return null;
 }
+
+    public void setPlayerLocation(Location target) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setPlayerLocation'");
+    }
+
+    
 
 }

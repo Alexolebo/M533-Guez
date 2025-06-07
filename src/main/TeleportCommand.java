@@ -12,10 +12,12 @@ public class TeleportCommand implements ICommand {
         this.world = world;
     }
 
-    @Override
-    public void execute(String input, Game game) {
+     @Override
+        public void execute(String input, Game game) {
         String[] parts = input.split(" ", 2);
-        if (!player.hasItem("teleport crystal")) {
+
+        // Vérifie que le joueur a bien l’objet "crystal"
+        if (!player.getInventory().contains("crystal")) {
             System.out.println("Vous n'avez pas le teleport crystal.");
             return;
         }
@@ -26,21 +28,24 @@ public class TeleportCommand implements ICommand {
         }
 
         String destinationName = parts[1].trim();
-
         Location target = world.findLocationByName(destinationName);
+
         if (target == null) {
             System.out.println("Ce lieu n'existe pas.");
             return;
         }
 
+        // Vérifie que le joueur a déjà visité cet endroit
         if (!player.hasVisited(target)) {
             System.out.println("Vous n'avez pas encore visité ce lieu.");
             return;
         }
 
-        player.moveTo(target);
-        System.out.println("✨ Téléporté à " + destinationName + " !");
-        System.out.println(player.getLocation().getLongDescription());
+        // Téléportation
+        player.setLocation(target);
+        world.setPlayerLocation(target); // Assure que la position est aussi mise à jour dans la carte
+        System.out.println(" Téléporté à " + destinationName + " !");
+        System.out.println(target.getDescription());
     }
 
     @Override
@@ -52,4 +57,10 @@ public class TeleportCommand implements ICommand {
     public String getUsage() {
         return "teleport nom_du_lieu";
     }
+
+    @Override
+    public String getDescription() {
+        return "Permet de se téléporter dans un lieu déjà visité si vous avez le crystal.";
+    }
+
 }
