@@ -6,6 +6,7 @@ import java.util.Set;
 public class Player {
     private Location location;
     private Inventory inventory;
+    private Set<Location> visited = new HashSet<>();
 
     public Player() {
     }
@@ -21,6 +22,7 @@ public class Player {
 
     public void setLocation(Location loc) {
         this.location = loc;
+        visited.add(loc);  
     }
 
     public Inventory getInventory() {

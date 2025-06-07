@@ -57,6 +57,12 @@ public class Game {
         this.world.addLocation(loc31, 3, 1);
         this.world.addLocation(loc32, 3, 2);
 
+        // Création du cristal de téléportation
+        GameObject teleportCrystal = new GameObject("crystal", "Permet de se téléporter à des lieux déjà visités.");
+
+        // Le cristal est placé dans la ville de Paris (coordonnées 2,0)
+        loc11.addObject(teleportCrystal);   
+
         
 
         
@@ -149,6 +155,12 @@ public class Game {
                 System.out.println("Invalid command.");
             }
         }
+    }
+
+
+    public Object getPlayer() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPlayer'");
     }
 
 }

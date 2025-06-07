@@ -7,7 +7,7 @@ import java.util.List;
 public class Inventory {
     private List<GameObject> items = new ArrayList();
     private int capacity = 10;
-
+    
     public Inventory() {
     }
 
@@ -52,4 +52,6 @@ public class Inventory {
         }
         return false;
     }
+
+    
 }
