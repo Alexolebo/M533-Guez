@@ -84,6 +84,7 @@ public class Game {
         this.commandRegistry.addCommand(new InspectCommand(this.player));
         this.commandRegistry.addCommand(new UseCommand(this.player));
         this.commandRegistry.addCommand(new SolveCommand(this.enigmaMap, this.player));
+        this.commandRegistry.addCommand(new TeleportCommand(this.player, this.world));
     }
 
     public void run() {

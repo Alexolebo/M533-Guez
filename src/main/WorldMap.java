@@ -38,4 +38,15 @@ public class WorldMap {
     public Location[][] getMap() {
         return map;
     }
+    public Location findLocationByName(String name) {
+    for (Location[] row : grid) {
+        for (Location loc : row) {
+            if (loc != null && loc.getName().equalsIgnoreCase(name)) {
+                return loc;
+            }
+        }
+    }
+    return null;
+}
+
 }

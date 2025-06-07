@@ -11,7 +11,7 @@ public class HelpCommand implements ICommand {
 
     @Override
     public String getDescription() {
-        return "List all available commands with their usage.";
+        return "Affiche toutes les commandes disponibles.";
     }
 
     @Override
@@ -26,9 +26,17 @@ public class HelpCommand implements ICommand {
 
     @Override
     public void execute(String input, Game game) {
-        System.out.println("Available commands:");
+        System.out.println("Commandes disponibles :");
+
         for (Map.Entry<String, ICommand> entry : registry.getAllCommands().entrySet()) {
-            System.out.println("- " + entry.getKey() + ": " + entry.getValue().getDescription());
+            ICommand command = entry.getValue();
+
+            // Cacher la commande teleport si le joueur n'a pas le crystal
+            if (command instanceof TeleportCommand && !game.getPlayer().hasItem("teleport crystal")) {
+                continue;
+            }
+
+            System.out.println("- " + command.getUsage() + ": " + command.getDescription());
         }
     }
 }
