@@ -12,7 +12,7 @@ public class Game {
     private Map<Location, Enigma> enigmaMap;
 
     public Game() {
-        System.out.println("Initializing game...");
+        System.out.println("VEUILLEZ LIRE ATTENTIVEMENT LES REGLES DU JEU JUSTE EN DESSOUS !!");
         this.commandRegistry = new CommandRegistry();
         this.player = new Player();
         this.world = new WorldMap(4, 3);
@@ -28,15 +28,15 @@ public class Game {
         Location loc21 = new Location("Paris", "L'endroit qui a la meilleure équipe de foot d'Europe.", true);
         Location loc22 = new Location("Chaux-de-Fonds", "Force à Pierre.", false);
         Location loc30 = new Location("Marseille", "Le terrain des gros en scooter.", false);
-        Location loc31 = new Location("Barcelone", "Shoko.", true);
-        Location loc32 = new Location("Majorque", ".", false);
+        Location loc31 = new Location("Barcelone", "Nous possédons le Shoko et Yamal", true);
+        Location loc32 = new Location("Majorque", "Le paysage est incroable ici.", false);
         
-        GameObject keyYverdon = new Key("key", "Une clé rouillée", loc02);
-        loc01.addObject(keyYverdon); // clé qui ouvre Yverdon
-        GameObject badgePierre = new Key("badge", "Un badge noir avec le logo d’un PC gamer", loc22);
-        loc21.addObject(badgePierre); // badhe qui ouvre CDF
-        GameObject passCrissier = new Key("pass", "Un pass VIP avec l’inscription 'Marcolet Club'", loc11);
-        loc10.addObject(passCrissier); // pass qui ouvre Crissier
+        GameObject keyYverdon = new Key("key", "Une clé rouillée pour entrer à Yverdon", loc02);
+        loc01.addObject(keyYverdon); // clé qui ouvre Yverdon et qui se trouve à Prilly
+        GameObject badgePierre = new Key("badge", "Un badge noir qui t'ammène à la Chaud-De-Fond", loc22);
+        loc21.addObject(badgePierre); // badge qui ouvre CDF et qui se trouve à Paris
+        GameObject passEclepens = new Key("pass", "Un pass VIP avec l’inscription 'Village perdu' qui permet d'entrer à Eclépens", loc20);
+        loc10.addObject(passEclepens); // pass qui ouvre Eclépens et qui se trouve à Renens
 
         this.world.addLocation(loc00, 0, 0);
         this.world.addLocation(loc01, 0, 1);
@@ -56,19 +56,35 @@ public class Game {
         
         // Depuis Prilly, on débloque Crissier
         Enigma crissierEnigma = new Enigma(
-                "Je suis un nain nul aux jeux-vidéos et un footix. Qui suis-je ?",
-                "Pierre",
-                loc02
+                "Si tu me dis mon nom, je n’existe plus. Qui suis-je ?",
+                "le silence",
+                loc11
         );
-        enigmaMap.put(loc10, crissierEnigma); // Énigme placée à Prilly
+        enigmaMap.put(loc01, crissierEnigma); // Énigme placée à Prilly
 
-        // Depuis Paris, on débloque Barcelone
-        Enigma barceloneEnigma = new Enigma(
+        // Depuis Crissier, on débloque Bourdonnette
+        Enigma bourdonetteEnigma = new Enigma(
+                "Plus tu t’approches de moi, moins tu me vois. Qui suis-je ?",
+                "le brouillard",
+                loc12
+        );
+        enigmaMap.put(loc11, bourdonetteEnigma); // Énigme placée à Crissier
+        
+        // Depuis Eclépens, on débloque Marseille
+        Enigma marseilleEnigma = new Enigma(
                 "Je suis une capitale catalane où joue Lewandowski. Qui suis-je ?",
                 "Barcelone",
-                loc21
+                loc30
         );
-        enigmaMap.put(loc20, barceloneEnigma); // Énigme placée à Paris
+        enigmaMap.put(loc20, marseilleEnigma); // Énigme placée à Eclépens
+
+        // Depuis Barcelone, on débloque Majorque
+        Enigma majorqueEnigma = new Enigma(
+                "Tu peux me lancer sans me rattraper. Je fais mal sans jamais toucher. Qui suis-je ?",
+                "une insulte",
+                loc32
+        );
+        enigmaMap.put(loc31, majorqueEnigma); // Énigme placée à Barcelone
 
         
 
@@ -87,7 +103,8 @@ public class Game {
     }
 
     public void run() {
-        System.out.println("Welcome to the game! Type 'help' to see available commands.");
+        System.out.println("Bienvenue dans le jeu. Tape la commande 'help' pour afficher toutes les commandes disponibles du jeu.");
+        System.out.println("Le but du jeu est de pouvoir découvrir toutes les zones grâce aux trois objets placés dans certaines locations ainsi que les énigmes.");
         Scanner scanner = new Scanner(System.in);
 
         while (true) {

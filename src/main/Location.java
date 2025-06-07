@@ -44,7 +44,7 @@ public class Location implements IPrintable {
 
     @Override
     public String getPrintableString() {
-        if (!isOpen) return "LACHE CA"; // si la zone est verrouillée
+        if (!isOpen) return this.getName(); // si la zone est verrouillée
 
         String fullName = name;
 
