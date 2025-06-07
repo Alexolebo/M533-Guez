@@ -1,6 +1,11 @@
 package main;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -10,8 +15,9 @@ public class Game {
     private WorldMap world;
     private CommandRegistry commandRegistry;
     private Map<Location, Enigma> enigmaMap;
+    private List<String> commandHistory = new ArrayList<>();
 
-    public Game() {
+    public Game(boolean loadFromSave) {
         System.out.println("VEUILLEZ LIRE ATTENTIVEMENT LES REGLES DU JEU JUSTE EN DESSOUS !!");
         this.commandRegistry = new CommandRegistry();
         this.player = new Player();
@@ -92,6 +98,7 @@ public class Game {
         this.player.setLocation(loc00);
         this.player.setInventory(new Inventory());
         
+        
         this.commandRegistry.addCommand(new GoCommand(this.world, this.player, this.enigmaMap));
         this.commandRegistry.addCommand(new LookCommand(this.player));
         this.commandRegistry.addCommand(new MapCommand(this.world));
@@ -101,7 +108,29 @@ public class Game {
         this.commandRegistry.addCommand(new UseCommand(this.player));
         this.commandRegistry.addCommand(new SolveCommand(this.enigmaMap, this.player));
         this.commandRegistry.addCommand(new TeleportCommand(this.player, this.world));
+        
+
+        // Commandes bonus
+        commandRegistry.addCommand(new SaveCommand(commandHistory));
+        commandRegistry.addCommand(new TeleportCommand(player, world));
+
+        // Si chargement de sauvegarde demandé
+        if (loadFromSave) {
+        try {
+            List<String> lines = Files.readAllLines(Paths.get("save.txt"));
+            for (String line : lines) {
+                ICommand cmd = commandRegistry.getCommand(line);
+                if (cmd != null && cmd.hasValidArguments(line)) {
+                    cmd.execute(line, this);
+                }
+            }
+            System.out.println("Sauvegarde chargée avec succès !");
+        } catch (IOException e) {
+            System.out.println("Erreur de lecture du fichier de sauvegarde.");
+        }
+        }
     }
+    
 
     public void run() {
         System.out.println("Bienvenue dans le jeu. Tape la commande 'help' pour afficher toutes les commandes disponibles du jeu.");
@@ -111,6 +140,7 @@ public class Game {
         while (true) {
             System.out.print("> ");
             String input = scanner.nextLine().trim();
+            commandHistory.add(input);
             ICommand command = commandRegistry.getCommand(input);
 
             if (command != null && command.hasValidArguments(input)) {
