@@ -152,11 +152,11 @@ public class Game {
             if (command != null && command.hasValidArguments(input)) {
                 command.execute(input, this);
                 if (world.allZonesUnlocked()) {
-                System.out.println("\n🎉 Félicitations ! Toutes les zones ont été débloquées. Vous avez terminé le jeu !");
+                System.out.println("Félicitations ! Toutes les zones ont été débloquées. Vous avez donc terminé le jeu !");
                 break; // termine la boucle → le jeu s'arrête
             }           
             } else {
-                System.out.println("Invalid command.");
+                System.out.println("Commande invalide.");
             }
         }
 
