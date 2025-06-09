@@ -60,8 +60,8 @@ public class Game {
         // Création du cristal de téléportation
         GameObject teleportCrystal = new GameObject("crystal", "Permet de se téléporter à des lieux déjà visités.");
 
-        // Le cristal est placé dans la ville de Paris (coordonnées 2,0)
-        loc11.addObject(teleportCrystal);   
+        // Le cristal est placé dans la ville de Paris 
+        loc21.addObject(teleportCrystal);   
 
         
 
@@ -151,10 +151,16 @@ public class Game {
 
             if (command != null && command.hasValidArguments(input)) {
                 command.execute(input, this);
+                if (world.allZonesUnlocked()) {
+                System.out.println("\n🎉 Félicitations ! Toutes les zones ont été débloquées. Vous avez terminé le jeu !");
+                break; // termine la boucle → le jeu s'arrête
+            }           
             } else {
                 System.out.println("Invalid command.");
             }
         }
+
+        
     }
 
 
