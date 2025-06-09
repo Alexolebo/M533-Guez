@@ -47,11 +47,22 @@ public class WorldMap {
         }
     }
     return null;
-}
+    }
 
     public void setPlayerLocation(Location target) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setPlayerLocation'");
+    }
+
+    public boolean allZonesUnlocked() {
+    for (Location[] row : map) {
+        for (Location loc : row) {
+            if (loc != null && !loc.isOpen()) {
+                return false;
+            }
+        }
+    }
+    return true;
     }
 
     
